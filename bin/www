@@ -27,9 +27,19 @@ Object.omit = function(obj, ...removeKeys) {
   return newObj;
 };
 
-const ENV = require('../.env.js');
+let ENV;
 const winston = require('./../config/winston');
-process.env.NODE_ENV = ENV.NODE_ENV;
+try {
+  ENV = require('../.env.js');
+  winston.info('Loaded configuration from .env.js');
+} catch (error) {
+  winston.warn('.env.js not found, using Azure App Service environment variables');
+  ENV = {};
+}
+
+// Set NODE_ENV with fallback chain: .env.js → process.env → 'production'
+process.env.NODE_ENV = ENV.NODE_ENV || process.env.NODE_ENV || 'production';
+winston.info(`NODE_ENV set to: ${process.env.NODE_ENV}`);
 /**
  * Module dependencies.
  */
