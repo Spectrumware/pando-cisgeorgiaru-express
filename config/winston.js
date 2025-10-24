@@ -1,4 +1,3 @@
-const env = require('./../.env');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -243,7 +242,7 @@ const getStackTrace = () => {
 
 // We Yeet notifications to the developer when an error occurs. Yeet because we don't care what happens to them
 const yeetNotification = (function() {
-  const notificationChannel = env.NODE_ENV === 'development' ? 'local' : 'wide';
+  const notificationChannel = process.env.NODE_ENV === 'development' ? 'local' : 'wide';
   const maxNotificationsPerHour = notificationChannel === 'local' ? 100 : 5;
   const newQueueEjectDate = function() {
     return new Date(new Date().getTime()+3600000);
