@@ -28,18 +28,17 @@ Object.omit = function(obj, ...removeKeys) {
 };
 
 let ENV;
-const winston = require('./../config/winston');
 try {
   ENV = require('../.env.js');
-  winston.info('Loaded configuration from .env.js');
+  console.log('Loaded configuration from .env.js');
 } catch (error) {
-  winston.warn('.env.js not found, using Azure App Service environment variables');
+  console.log('.env.js not found, using Azure App Service environment variables');
   ENV = {};
 }
 
 // Set NODE_ENV with fallback chain: .env.js → process.env → 'production'
 process.env.NODE_ENV = ENV.NODE_ENV || process.env.NODE_ENV || 'production';
-winston.info(`NODE_ENV set to: ${process.env.NODE_ENV}`);
+console.log(`NODE_ENV set to: ${process.env.NODE_ENV}`);
 /**
  * Module dependencies.
  */
@@ -53,7 +52,7 @@ const http = require('http');
  */
 
 const port = normalizePort(process.env.PORT || '3000');
-winston.info('starting on port: '+port);
+console.log('Starting server on port: '+port);
 app.set('port', port);
 
 /**
@@ -105,10 +104,10 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
   case 'EACCES':
-    winston.error(bind + ' requires elevated privileges');
+    console.error(bind + ' requires elevated privileges');
     process.exit(1);
   case 'EADDRINUSE':
-    winston.error(bind + ' is already in use');
+    console.error(bind + ' is already in use');
     process.exit(1);
   default:
     throw error;
@@ -124,4 +123,5 @@ function onListening() {
     'pipe ' + addr :
     'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log('Server listening on ' + bind);
 }

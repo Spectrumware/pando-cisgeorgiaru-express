@@ -1,7 +1,6 @@
 /* jshint -W079 */
 /* jshint -W124 */
 const express = require('express');
-const winston = require('./config/winston');
 const path = require('path');
 const fs = require('fs');
 const favicon = require('serve-favicon');
@@ -11,23 +10,30 @@ const cookieSession = require('cookie-session');
 const methodOverride = require('method-override');
 const parser = require('express-busboy');
 const csrf = require('csurf');
-const env = require('./.env');
 const aleet = require('aleet');
+
+// Load environment configuration with fallback
+let env;
+try {
+  env = require('./.env');
+  console.log('App: Loaded configuration from .env.js');
+} catch (error) {
+  console.log('App: .env.js not found, using default configuration');
+  env = {
+    NODE_ENV: process.env.NODE_ENV || 'production',
+    app: {
+      title: process.env.APP_TITLE || 'Reality U CIS Georgia',
+      domain: process.env.APP_DOMAIN || '',
+      topDomain: process.env.APP_TOP_DOMAIN || 'cisgeorgiaru.org',
+      workerID: parseInt(process.env.APP_WORKER_ID || '1', 10)
+    }
+  };
+}
 
 const publicPaths = require('./routes/public');
 
-process.stdout.write = /** @type {(text: string) => true} */(function(text) {
-  winston.info(text);
-  return true;
-});
-
-process.stderr.write = /** @type {(text: string) => true} */(function(text) {
-  winston.unknownError(text);
-  return true;
-});
-
 process.on('uncaughtException', function(err) {
-  // console.error((err && err.stack) ? err.stack: err);
+  console.error('Uncaught Exception:', (err && err.stack) ? err.stack: err);
   throw err;
 });
 
@@ -51,16 +57,9 @@ aleet.config({
    */
   log: function(err) {
     if (err instanceof Error) {
-      winston.unknownError(err);
+      console.error('Aleet Error:', err);
     } else if (typeof err === 'string') {
-      // this is a function string that failed to parse, log an error and then write the function string to a file
-      const fileName = 'view-error-'+Date.now()+'.js';
-      winston.unknownError(new Error('Failed to parse function string, writing to file: '+fileName));
-      try {
-        fs.writeFileSync(path.resolve(__dirname, 'logs', fileName), err, 'utf8');
-      } catch (e) {
-        // ignore
-      }
+      console.error('Aleet Parse Error:', err);
     }
   }
 });
@@ -170,14 +169,13 @@ app.use(
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    winston.error({
-      message: 'Request Error: '+err.message,
-      instanceVariables: {
-        status: err.status || 500,
-        url: req.originalUrl,
-        method: req.method,
-        ip: req.ip
-      }
+    console.error('Request Error:', {
+      message: err.message,
+      status: err.status || 500,
+      url: req.originalUrl,
+      method: req.method,
+      ip: req.ip,
+      stack: req.app.get('env') === 'development' ? err.stack : undefined
     });
 
     // render the error page
