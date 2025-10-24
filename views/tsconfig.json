@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "rootDir": "./..",
+    "target": "ES2021",
+    "checkJs": true,
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "types",
+    "strict": true,
+    "declarationMap": true,
+    "noErrorTruncation": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "maxNodeModuleJsDepth": 8,
+    "noImplicitThis": true,
+    "noImplicitAny": true
+  },
+  "include": ["./../public/**/*.js", "./../public/js/_base.js", "./../public/js/_comp.js", "./../views/**/*.js", "../public/js/luxon.min.js"],
+  "exclude": ["node_modules", "./../views/**/*.server.js", "./../views/*.server.js", "**/node_modules/*", "./../bin", "./../config", "./../migrations", "./../models", "./../routes", "./../app.js", "./../*.js", "./../public/**/*.min.js", "./../public/**/pdf-lib.js", "./../public/**/pdf.js", "./../public/**/fontawesome.source.js", "./../public/**/fontawesome.js"]
+}

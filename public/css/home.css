@@ -1,0 +1,104 @@
+.focus {
+	background-image: url("/imgs/Home.png");
+	background-repeat: no-repeat;
+    background-size: cover;
+    height: 620px;
+    position: relative;
+    margin-bottom: 50px;
+    border-bottom: 10px solid #bec531;
+		padding-top: 25px;
+		text-align: center;
+		vertical-align: top;
+}
+
+.focus_banner {
+	background-color: rgba(41,100,107,0.74);
+	position: absolute;
+	bottom: 100px;
+	left: 100px;
+	width: 100%;
+	max-width: 600px;
+	padding: 5px 25px;
+}
+
+.main_content{
+	padding-right: 25px;
+	padding-left: 25px;
+}
+
+.column_left{
+	width:75%;
+	float: left;
+	padding: 25px;
+	color: #305c61;
+}
+
+.column_right{
+	width:25%;
+	float: right;
+	padding: 25px;
+	color: #305c61;
+}
+
+.Pando_Logo{
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.goals {
+	counter-reset: goal-counter;
+	list-style-type: none;
+}
+
+.goal{
+	line-height: 40px;
+	padding-bottom: 15px;
+}
+
+.goal:before {
+	content: counter(goal-counter);
+	counter-increment: goal-counter;
+	width: 40px;
+	height: 20px;
+	border-radius: 20px;
+	background-color: #68ad45;
+	text-align: center;
+	font-size: 2em;
+	float: left;
+	color: #fff;
+	margin-right:10px;
+}
+
+.standards {
+	list-style-type: lower-alpha;
+	padding-left: 75px;
+}
+
+.standards li{
+	line-height: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.promo{
+	margin-top: 0px;
+	border-radius: 5px;
+	position: fixed;
+	top: -1000px;
+	z-index: 100;
+}
+
+.promo_show:hover{
+	color: #bec531;
+}
+
+.promo.playing{
+	top:15px;
+}
+
+@media screen and (max-width: 909px) {
+    .nav_list{
+			display: none;
+		}
+}

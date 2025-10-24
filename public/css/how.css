@@ -1,0 +1,37 @@
+.side-image{
+	width: 250px;
+	height: auto;
+}
+
+.side-image-wrap{
+	text-align: center;
+}
+
+.perc-left{
+	float: left;
+}
+
+.perc-right{
+	float: right;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.col-wrap{
+	padding: 10px;
+	margin-top: 40px;
+}
+
+.outcomes{
+	position: absolute;
+	top: 150px;
+	left: 180px;
+	font-size: 2.4em;
+	font-weight: bold;
+}
+
+.perc-wrap{
+	width: 70%;
+}

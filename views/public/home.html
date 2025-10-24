@@ -1,0 +1,133 @@
+<html>
+
+<head>
+  <title>Reality U - Home</title>
+  <meta name="csrf-token" content="QAdo79aZiX2BsjQOO4jQfU4XoxR1hr0zxWZ8clwh" />
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
+    integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body class="body">
+  <nav class="nav">
+    <a href="/" class="logo_link"><img src="/imgs/logo.png" height="85px" width="250px"></a>
+    <ul class="nav_list">
+      <li class="nav_list_elem"><a href="/bring" class="nav_link">Bring Reality U to Your School</a></li>
+      <li class="nav_list_elem"><a href="/how" class="nav_link">How it Works</a></li>
+      <li class="nav_list_elem"><a href="https://app.realityu.org/volunteer?region=Georgia"
+          class="nav_link">Volunteer</a></li>
+      <li class="nav_list_elem"><a href="https://app.realityu.org/lifestyle" class="nav_link">Survey</a></li>
+      <li class="nav_list_elem">
+        <a href="https://app.realityu.org/user/dashboard" class="nav_link">Login</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <div class="focus">
+      <video width="800" height="450" src="/vids/promo.mp4" class="promo">
+      </video>
+      <div class="focus_banner">
+        <h1>Welcome to the <span class="text_green">Reality U</span> experience!</h1>
+        <p>Reality U helps youth acquire personal financial education to prepare them for their lives as adults – all
+          packed into a highly interactive 75-minute simulation of life!</p>
+        <h1><a href="" class="promo_show text_green">Reality U in Action (video)</a></h1>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="column_left">
+        <div class="column_content">
+          <h1>The goals of <span class="text_green">Reality U</span> are</h1>
+          <ol class="goals clearfix">
+            <li class="goal clearfix">
+              Teach teens that their performance in school today can affect their future.
+            </li>
+            <li class="goal clearfix">
+              Provide students with the opportunity to learn and practice personal finance skills.
+            </li>
+            <li class="goal clearfix">
+              Mobilize the community to become involved stakeholders in education, particularly financial literacy
+              education in their local schools.
+            </li>
+            <li class="goal clearfix">
+              <span class="bold">Meet several National Standards for Financial Literacy:</span>
+              <ol class="standards">
+                <li>
+                  Students will use rational decision-making and planning to set and implement financial goals
+                </li>
+                <li>
+                  Students will understand sources of income and the relationship between income and career preparation
+                </li>
+                <li>
+                  Students will understand principles of money management
+                </li>
+                <li>
+                  Students will understand credit uses and costs.
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="column_right">
+        <div class="column_content">
+          <a href="http://cisga.org/"><img src='/imgs/Pando_logo.png' width="200px" class="Pando_Logo"></a>
+          Communities In Schools (CIS) of Georgia is the state's leading organization in providing student support
+          services and drop-out prevention. CIS is dedicated to empowering at-risk students to stay in school and on a
+          path to a brighter future. Working directly inside more than 244 schools and 4 community sites across the
+          state, we connect kids to caring adults and community resources designed to help them succeed. We do whatever
+          it takes to ensure that all kids—regardless of the challenges they may face—have what they need to realize
+          their potential.
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="contact">
+      <h2>Contact Info</h2>
+      Leslie E. Myles<br>
+      (404) 897-2970<br>
+      lmyles@cisgeorgia.org<br>
+      260 Peachtree Street, Suite 700, Atlanta, GA, 30303<br>
+    </div>
+    <div class="quote">
+      &quot;It seems like a lot of students are not setting themselves up for success and I always hope Reality U plays
+      a part in making them more serious about school and life in general.&quot;
+    </div>
+    <div class="logo">
+      <a href="/"><img src="/imgs/logo.png" height="85px" width="250px" class="logo_footer"></a>
+    </div>
+  </footer>
+  <!-- JavaScripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.promo').on('ended', function () {
+        $('.promo').removeClass('playing');
+      });
+      $('.promo_show').click(function (e) {
+        var promo = $('.promo');
+        var width = promo.parent().width() * 0.8;
+        var height = (width / 800) * 450;
+        var left = width / 8;
+        promo.width(width);
+        promo.css('left', left);
+        promo.height(height);
+        promo[0].load();
+        promo.addClass('playing');
+        promo[0].play();
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+
+</html>

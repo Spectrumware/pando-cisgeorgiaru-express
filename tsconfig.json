@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ES2022",
+    "checkJs": true,
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "types",
+    "strict": true,
+    "declarationMap": true,
+    "noErrorTruncation": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "maxNodeModuleJsDepth": 8,
+    "noImplicitThis": true,
+    "noImplicitAny": true
+  },
+  "include": [
+    "views/**/*.server.js",
+    "views/*.server.js",
+    "lib/**/*.js",
+    "bin/**/*.js",
+    "config/**/*.js",
+    "migrations/**/*.js",
+    "models/**/*.js",
+    "routes/**/*.js",
+    "app.js",
+    "global.d.ts"
+  ],
+  "exclude": ["node_modules", "public", "views", "**/node_modules/*", "test"]
+}

@@ -1,0 +1,25 @@
+.column_left{
+	padding: 50px;
+	padding-top: 75px;
+	padding-bottom: 75px;
+	color: #305c61;
+	margin-right: 300px;
+	padding-right: 0px;
+}
+
+.column_right{
+	width: 50%;
+	max-width: 300px;
+	float: right;
+	padding: 75px;
+	padding-right: 0px;
+	padding-left: 50px;
+	color: #305c61;
+	position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+	.column_left{
+		margin-right: 50%;
+	}
+}

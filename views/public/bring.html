@@ -1,0 +1,142 @@
+<html>
+
+<head>
+  <title>Reality U - Bring Reality U</title>
+  <meta name="csrf-token" content="QAdo79aZiX2BsjQOO4jQfU4XoxR1hr0zxWZ8clwh" />
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
+    integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/columns.css">
+
+  <link rel="stylesheet" href="/css/bring.css">
+</head>
+
+<body class="body">
+  <nav class="nav">
+    <a href="/" class="logo_link"><img src="/imgs/logo.png" height="85px" width="250px"></a>
+    <ul class="nav_list">
+      <li class="nav_list_elem"><a href="/bring" class="nav_link">Bring Reality U to Your School</a></li>
+      <li class="nav_list_elem"><a href="/how" class="nav_link">How it Works</a></li>
+      <li class="nav_list_elem"><a href="https://app.realityu.org/volunteer?region=Georgia"
+          class="nav_link">Volunteer</a></li>
+      <li class="nav_list_elem"><a href="https://app.realityu.org/lifestyle" class="nav_link">Survey</a></li>
+      <li class="nav_list_elem">
+        <a href="https://app.realityu.org/user/dashboard" class="nav_link">Login</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <div class="column_right">
+      <div class="column_content">
+      </div>
+    </div>
+    <div class="column_left">
+      <div class="error_cont alert alert-danger alert-dismissible i-0"></div>
+      <div class="success_cont alert alert-success alert-dismissible i-0"></div>
+      <div class="column_content">
+        <h1>bringing <span class="text_green">Reality U</span> to your school</h1><br>
+
+        <h2>1. Schedule Reality U</h2>
+        <ul>
+          <li>
+            Determine a date, location and the students you would like to participate in the event. We recommend the
+            events for middle and high school grade students.
+          </li>
+          <li>
+            Each event session lasts a minimum of 75 minutes with no more than 75 students per session.
+          </li>
+          <li>
+            If the number of participants at your school will be under 200 students, you can ask an adjacent
+            school/school district to join with you.
+          </li>
+        </ul>
+
+        <h2>2. Contact Us</h2>
+        <ul>
+          <li>
+            Email or call our administrative office regarding the event details in order to reserve your event: <span
+              class="bold">(404) 897-2970 or lmyles@cisgeorgia.org</span>
+          </li>
+        </ul>
+
+        <h2>3. Reality U Timeline</h2>
+        <ul>
+          <li>
+            <span class="bold">8-10 weeks prior to event</span><br>
+            Notify us of your proposed event date, your event coordinator’s contact information, number of students
+            (maximum of 75 students/session) and number of sessions (minimum of 75 minutes/session).<br>
+            We will invoice you and upon receipt of payment, send the Reality U materials to your Reality U event
+            coordinator.
+          </li>
+          <li>
+            <span class="bold">6 weeks prior to event</span><br>
+            You will receive your access code for event management<br>
+            Volunteer Recruitment begins
+          </li>
+          <li>
+            <span class="bold">4 weeks prior to event</span><br>
+            Teachers receive event orientation<br>
+            Students provided access to complete individualized online lifestyle survey
+          </li>
+          <li>
+            <span class="bold">1 week prior to event</span><br>
+            Lifestyle profiles are printed and distributed to teachers<br>
+            Volunteers are scheduled and sent confirmations
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="contact">
+      <h2>Contact Info</h2>
+      Leslie E. Myles<br>
+      (404) 897-2970<br>
+      lmyles@cisgeorgia.org<br>
+      260 Peachtree Street, Suite 700, Atlanta, GA, 30303<br>
+    </div>
+    <div class="quote">
+      &quot;I wish I had had this experience when I was in high school!&quot;
+    </div>
+    <div class="logo">
+      <a href="/"><img src="/imgs/logo.png" height="85px" width="250px" class="logo_footer"></a>
+    </div>
+  </footer>
+  <!-- JavaScripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    var successTimeoutHandle = undefined;
+    var errorTimeoutHandle = undefined;
+    var alertTimeoutLength = 7000;
+    function set_success(text, index) {
+      clearTimeout(successTimeoutHandle);
+      if (typeof index === "undefined") {
+        $('.success_cont.i-0').text(text);
+      }
+      else {
+        $('.success_cont.i-' + index).text(text);
+      }
+      setTimeout(function () { $('.success_cont').text(""); }, alertTimeoutLength);
+    }
+    function set_error(text, index) {
+      clearTimeout(errorTimeoutHandle);
+      if (typeof index === "undefined") {
+        $('.error_cont.i-0').text(text);
+      }
+      else {
+        $('.error_cont.i-' + index).text(text);
+      }
+      setTimeout(function () { $('.error_cont').text(""); }, alertTimeoutLength);
+    }
+  </script>
+</body>
+
+</html>

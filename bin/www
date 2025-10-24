@@ -1,0 +1,117 @@
+#!/usr/bin/env node
+// eslint-disable-next-line no-extend-native
+Object.defineProperty(BigInt.prototype, 'toJSON', {
+  get() {
+    'use strict';
+    return () => this+':bigint';
+  }
+});
+
+// add omit function to the static Object class
+/**
+ * @template {Object} T
+ * @template {keyof T} K
+ * @param {T} obj
+ * @param {K[]} removeKeys
+ * @returns {Omit<T, K>}
+ */
+Object.omit = function(obj, ...removeKeys) {
+  const newObj = {};
+  const keys = Object.keys(obj);
+  const removeKeysSet = new Set(removeKeys);
+  for (const key of keys) {
+    if (!removeKeysSet.has(key)) {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+};
+
+const ENV = require('../.env.js');
+const winston = require('./../config/winston');
+process.env.NODE_ENV = ENV.NODE_ENV;
+/**
+ * Module dependencies.
+ */
+
+const app = require('../app');
+const debug = require('debug')('test:server');
+const http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+const port = normalizePort(process.env.PORT || '3000');
+winston.info('starting on port: '+port);
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+const server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+  // eslint-disable-next-line no-shadow
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  const bind = typeof port === 'string' ?
+    'Pipe ' + port :
+    'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+  case 'EACCES':
+    winston.error(bind + ' requires elevated privileges');
+    process.exit(1);
+  case 'EADDRINUSE':
+    winston.error(bind + ' is already in use');
+    process.exit(1);
+  default:
+    throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
+  debug('Listening on ' + bind);
+}

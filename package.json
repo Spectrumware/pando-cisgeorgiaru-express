@@ -1,0 +1,32 @@
+{
+    "name": "realityu-cisgeorgia",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www",
+        "tailwindcss": "node tailwindGen.js --watch",
+        "generateServerTypes": "node typesGen.js --watch"
+    },
+    "dependencies": {
+        "aleet": "^4.8.3",
+        "cookie-parser": "^1.4.4",
+        "cookie-session": "^2.0.0-beta.3",
+        "csurf": "^1.2.2",
+        "express": "^4.17.1",
+        "express-busboy": "^9.0.0",
+        "method-override": "^2.3.10",
+        "serve-favicon": "^2.5.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.3",
+        "@types/node": "^20.3.2",
+        "eslint": "^8.23.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-plugin-html": "^7.1.0",
+        "tailwind-scrollbar": "^3.0.5",
+        "tailwindcss": "^3.4.1",
+        "ts-morph": "^19.0.0",
+        "typescript": "^5.5.0"
+    },
+    "sideEffects": false
+}

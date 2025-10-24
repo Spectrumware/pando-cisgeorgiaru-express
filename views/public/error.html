@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <title>Reality U - How Reality U Works</title>
+  <meta name="csrf-token" content="QAdo79aZiX2BsjQOO4jQfU4XoxR1hr0zxWZ8clwh" />
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
+    integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/columns.css">
+
+  <link rel="stylesheet" href="/css/how.css">
+</head>
+
+<body class="body">
+  <nav class="nav">
+    <a href="/" class="logo_link"><img src="/imgs/logo.png" height="85px" width="250px"></a>
+    <ul class="nav_list">
+      <li class="nav_list_elem"><a href="/bring" class="nav_link">Bring Reality U to Your School</a></li>
+      <li class="nav_list_elem"><a href="/how" class="nav_link">How it Works</a></li>
+      <li class="nav_list_elem"><a href="https://app.realityu.org/volunteer?region=Georgia"
+          class="nav_link">Volunteer</a></li>
+      <li class="nav_list_elem"><a href="https://app.realityu.org/lifestyle" class="nav_link">Survey</a></li>
+      <li class="nav_list_elem">
+        <a href="https://app.realityu.org/user/dashboard" class="nav_link">Login</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <div class="column_right">
+      <div class="column_content">
+      </div>
+    </div>
+    <div class="column_left">
+      <div class="error_cont alert alert-danger alert-dismissible i-0"></div>
+      <div class="success_cont alert alert-success alert-dismissible i-0"></div>
+      <div class="column_content">
+        <div class="custom-header clearfix" style="text-align: center;">
+          <span class="header-title">Unknown Error</span>
+        </div>
+        <form class="custom-body" action="/auth/login" method="post">
+          <p>Oops, something went wrong, please try again later</p>
+        </form>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="contact">
+        <h2>Contact Info</h2>
+        Leslie E. Myles<br>
+        (404) 897-2970<br>
+        lmyles@cisgeorgia.org<br>
+        260 Peachtree Street, Suite 700, Atlanta, GA, 30303<br>
+      </div>
+      <div class="quote">
+        &quot;Most of the students I have met during my volunteer days with Reality U are NOT enrolled in a personal
+        finance class. This project may be their only opportunity to think about the problem of financing the future
+        they envision for themselves.&quot;
+      </div>
+      <div class="logo">
+        <a href="/"><img src="/imgs/logo.png" height="85px" width="250px" class="logo_footer"></a>
+      </div>
+    </footer>
+    <!-- JavaScripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+      var successTimeoutHandle = undefined;
+      var errorTimeoutHandle = undefined;
+      var alertTimeoutLength = 7000;
+      function set_success(text, index) {
+        clearTimeout(successTimeoutHandle);
+        if (typeof index === "undefined") {
+          $('.success_cont.i-0').text(text);
+        }
+        else {
+          $('.success_cont.i-' + index).text(text);
+        }
+        setTimeout(function () { $('.success_cont').text(""); }, alertTimeoutLength);
+      }
+      function set_error(text, index) {
+        clearTimeout(errorTimeoutHandle);
+        if (typeof index === "undefined") {
+          $('.error_cont.i-0').text(text);
+        }
+        else {
+          $('.error_cont.i-' + index).text(text);
+        }
+        setTimeout(function () { $('.error_cont').text(""); }, alertTimeoutLength);
+      }
+    </script>
+</body>
+
+</html>
